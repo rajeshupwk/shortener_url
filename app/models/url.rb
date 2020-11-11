@@ -9,7 +9,10 @@ class Url < ApplicationRecord
   after_save :get_title
 
   def get_slug
-    self.short_url = rand(36**8).to_s(36)
+    loop do
+      self.short_url = rand(36**8).to_s(36)
+    break unless Url.exists?(short_url: self.short_url)
+    end
   end
 
   def get_title

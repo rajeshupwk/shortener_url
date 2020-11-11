@@ -5,7 +5,12 @@ class Url < ApplicationRecord
 
   scope :hundred_most_visited, -> { order('hit DESC').limit(100) }
 
+  before_create :get_slug
   after_save :get_title
+
+  def get_slug
+    self.short_url = rand(36**8).to_s(36)
+  end
 
   def get_title
     GetUrlTitleJob.perform_later self

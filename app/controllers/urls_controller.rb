@@ -9,10 +9,10 @@ class UrlsController < ApplicationController
   end
 
   def create
-    @url           = Url.new(url_params)
-    @url.short_url = get_slug
+    @url = Url.new(url_params)
+
     if @url.save
-      @get_short_url = get_short_url
+      @get_short_url = get_short_url(@url.short_url)
     end
   end
 
@@ -34,11 +34,7 @@ class UrlsController < ApplicationController
     params.require(:url).permit(:full_url)
   end
 
-  def get_slug
-    @get_slug ||= rand(36**8).to_s(36)
-  end
-
-  def get_short_url
-    request.base_url + '/s/' + get_slug
+  def get_short_url(short_url)
+    request.base_url + '/s/' + short_url
   end
 end

@@ -1,14 +1,15 @@
 class UrlsController < ApplicationController
 
   def new
-    
+    @url = Url.new
   end
 
   def create
     @url           = Url.new(url_params)
     @url.short_url = get_slug
-    @get_short_url = get_short_url
-    @url.save
+    if @url.save
+      @get_short_url = get_short_url
+    end
   end
 
   def shortener

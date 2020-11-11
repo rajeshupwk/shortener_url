@@ -1,1 +1,6 @@
-$(".short-url").html("<%= @get_short_url %>");
+<% if @url.errors.any? %>
+  alert("ERROR(S): <%= j @url.errors.full_messages.join('; ') %>")
+<% else %>
+  alert("short url generated")
+  $(".short-url").html("<%= @get_short_url %>");
+<% end %>

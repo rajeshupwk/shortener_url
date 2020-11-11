@@ -1,5 +1,9 @@
 class UrlsController < ApplicationController
 
+  def index
+    @urls = Url.hundred_most_visited
+  end
+
   def new
     @url = Url.new
   end

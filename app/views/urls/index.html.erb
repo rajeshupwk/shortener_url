@@ -1,0 +1,5 @@
+<h1>Top 100 most visited page</h1>
+<%= link_to 'Generate Shortener URL', new_url_path %>
+<% @urls.each_with_index do |url, i| %>
+  <h5>#<%= i+1 %> <%= url.title || 'title not present' %> : <%= url.full_url %></h5>
+<% end %>

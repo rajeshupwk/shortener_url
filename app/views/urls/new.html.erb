@@ -1,14 +1,16 @@
 <h1>Generate Shortener Url</h1>
-<%= form_with scope: :url, url: urls_path do |form| %>
+<%= form_with scope: :url, url: urls_path, class: 'form-group' do |form| %>
+  <div class="form-group">
+    <%= form.label :full_url %>
+    <%= form.text_area :full_url, class: "form-control" %>
+  </div>
   <p>
-    <%= form.label :full_url %><br>
-    <%= form.text_area :full_url %>
-  </p> 
-  <p>
-    <%= form.submit %>
+    <%= form.submit 'Generate Url', class: "btn btn-default" %>
   </p>
 <% end %>
 <span class='short-url'></span>
 <br/>
-<%= link_to 'reload!', root_url %>
-<%= link_to 'Top 100 most visited page', urls_path %>
+<%= link_to 'reload!', root_url, class: "btn btn-warning" %>
+<%= link_to 'Top 100 most visited page', urls_path, class: "btn btn-primary" %>
+
+

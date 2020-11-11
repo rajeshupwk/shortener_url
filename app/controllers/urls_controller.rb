@@ -15,6 +15,7 @@ class UrlsController < ApplicationController
     @url = Url.find_by(short_url: params[:slug])
 
     if @url.present?
+      @url.update(hit: @url.hit + 1)
       redirect_to @url.full_url
     else
       flash[:error] = 'page not found.'

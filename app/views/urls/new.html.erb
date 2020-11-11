@@ -1,0 +1,10 @@
+<h1>Generate Shortener Url</h1>
+<%= form_with scope: :url, url: urls_path, local: true do |form| %>
+  <p>
+    <%= form.label :full_url %><br>
+    <%= form.text_area :full_url %>
+  </p> 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

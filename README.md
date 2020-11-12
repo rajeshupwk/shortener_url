@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version : 2.5.5
 
-Things you may want to cover:
+* Rails version : 5.2.4.4
 
-* Ruby version
+* Database : postgresql
 
-* System dependencies
+* Background server : Sidekiq
 
-* Configuration
+# Setup steps
 
-* Database creation
+* Clone the app
 
-* Database initialization
+* run `bundle install`
 
-* How to run the test suite
+* run `rake db:migrate`
 
-* Services (job queues, cache servers, search engines, etc.)
+* start rails server, redis-server and sidekiq
 
-* Deployment instructions
+# Algorithm for generating the URL short code
 
-* ...
+* Use `rand(36**8).to_s(36)` random string for generate short_code.

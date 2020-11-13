@@ -1,11 +1,18 @@
 <h1>Top 100 most visited page</h1>
 <%= link_to 'Generate Shortener URL', new_url_path, class: "btn btn-primary" %><br/><br/>
 <table class="table table-striped">
+  <tr>
+    <th></th>
+    <th>Title</th>
+    <th>Full Url</th>
+    <th>Short Url</th>
+  </tr>
 <% @urls.each_with_index do |url, i| %>
   <tr>
     <td>#<%= i+1 %></td>
     <td class="col-md-5"><%= url.title || 'title not present' %></td>
     <td class="col-md-1"><%= url.full_url %></td>
+    <td class="col-md-1"><%= link_to get_short_url(url.short_url), get_short_url(url.short_url), target: 'blank' %></td>
   </tr>
 <% end %>
 </table>

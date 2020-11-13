@@ -7,6 +7,7 @@ class Url < ApplicationRecord
 
   before_create :get_slug
   after_save :get_title
+  before_validation :convert_in_downcase
 
   def get_slug
     loop do
@@ -17,5 +18,9 @@ class Url < ApplicationRecord
 
   def get_title
     GetUrlTitleJob.perform_later self
+  end
+
+  def convert_in_downcase
+    self.full_url = self.full_url.downcase
   end
 end
